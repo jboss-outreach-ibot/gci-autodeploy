@@ -1,0 +1,27 @@
+git config --local user.name "jboss-outreach-ibot"
+git config --local user.email "anuj.garg@codingblocks.com"
+
+if [ "$TRAVIS_EVENT_TYPE" = "cron" ]
+then
+    SUPPLIED_STRING=`date --date="2 days ago" +"%Y-%m-%d"`
+    CWD=$(pwd)
+    DIRS=$(find $CWD -type d | sort)
+
+    echo "CWD: $CWD"
+
+    for dir in $DIRS
+    do
+      dir_name=$(basename $dir)
+
+      [[ $dir_name == '.' ]] && continue
+
+      if [[ $dir_name < $SUPPLIED_STRING ]]
+      then
+          rm -rf $dir_name
+      fi
+    done
+    
+    git add .
+    git commit -m "Removed old deployment in cron"
+    git push --quiet "https://${BOT_USER}:${BOT_TOKEN}@github.com/jboss-outreach-ibot/gci-autodeploy.git" master
+fi
