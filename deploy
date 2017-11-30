@@ -14,11 +14,10 @@ then
       dir_name=$(basename $dir)
 
       [[ $dir_name == '.' ]] && continue
-      
-      [[ $dir_name == 'scripts' ]] && continue
 
       if [[ $dir_name < $SUPPLIED_STRING ]]
       then
+          echo $dir_name
           rm -rf $dir_name
       fi
     done
