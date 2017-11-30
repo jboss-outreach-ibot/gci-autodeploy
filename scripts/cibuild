@@ -14,6 +14,8 @@ then
       dir_name=$(basename $dir)
 
       [[ $dir_name == '.' ]] && continue
+      
+      [[ $dir_name == 'scripts' ]] && continue
 
       if [[ $dir_name < $SUPPLIED_STRING ]]
       then
