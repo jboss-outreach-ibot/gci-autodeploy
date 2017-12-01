@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+bundle exec jekyll build
+
+sha=`git rev-parse --short HEAD`
+base=`date +"%Y-%m-%d"`
+item=`echo "$base/$sha"`
+echo $item
+
+cd ..
+git clone https://github.com/jboss-outreach-ibot/gci-autodeploy.git
+
+mkdir -p gci-autodeploy/$item
+cp -a gci/_site/. gci-autodeploy/$item/
+
+cd gci-autodeploy
+git config --local user.name "jboss-outreach-ibot"
+git config --local user.email "anuj.garg@codingblocks.com"
+git add .
+git commit -m "Add commit for auto-deployment"
+git push --quiet "https://${BOT_USER}:${BOT_TOKEN}@github.com/jboss-outreach-ibot/gci-autodeploy.git" master
+
+message="The pull request has been auto-deployed at https://bot.jboss-outreach.org/$item"
+
+if [ "$TRAVIS_PULL_REQUEST" = "false" ]
+then
+    echo "No auto-deployment message"
+else
+    curl -X POST "https://${BOT_USER}:${BOT_TOKEN}@api.github.com/repos/jboss-outreach/gci/issues/${TRAVIS_PULL_REQUEST}/comments" --data-binary '{"body": "'"$message"'"}'
+fi
+
+
