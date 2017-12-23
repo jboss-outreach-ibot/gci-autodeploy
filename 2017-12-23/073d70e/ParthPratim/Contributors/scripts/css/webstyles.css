@@ -1,0 +1,116 @@
+body
+{
+	font-family:'lato';
+	margin:0;
+	padding:0;
+	background:#f5f5f5;
+}
+.jboss-bar
+{
+	font-size:20px;
+	color:#fff;
+	padding:2% 0px;
+	width:100%;
+	background:#263238;
+	text-align:center;
+	position: relative;
+}
+
+.jboss-page
+{
+	width:100%;
+	text-align: center;
+}
+
+.jboss-page .jboss-main
+{
+	display: inline-block;
+	width:500px;
+	height:auto;
+	background: #fff;
+	border-radius:3px;
+	box-shadow: 0px 0px 2px lightgray;
+	margin: 20px 0px;
+}
+.jboss-page .jboss-main .jboss-list
+{
+	height:auto;
+	width:100%;
+}
+.jboss-page .jboss-main .jboss-list .jboss-list-item
+{
+	width:100%;
+	border-bottom:3px solid #F5F5F5;
+	height:60px;
+	transition: all 500ms ease;
+	overflow: hidden;
+}
+.jboss-contrib-icon , .jboss-contrib-name
+{
+display:inline-block;
+vertical-align: middle;
+margin:5px 0px;
+}
+.jboss-contrib-icon
+{
+	width:50px;
+	height:50px;
+	border-radius: 100%;
+	background-color: lightgray;
+	overflow: hidden;
+}
+.jboss-contrib-name
+{
+	width:400px;
+	height:23px;
+	font-size:18px;
+	text-align: left;
+	color:#707070;
+	overflow-wrap: inherit;
+	overflow: hidden;
+	margin-left:10px;
+}
+.jboss-list-item:hover
+{
+	height:120px !important;
+}
+.jboss-user-attribs
+{
+	display: block;
+	margin-left: 80px;
+	font-size:15px;
+	color:#808080;
+	text-align: left;
+}
+.number
+{
+	color:#404040;
+}
+.jboss-user-attribs a
+{
+	text-decoration: none;
+	color:#1E90FF;
+}
+.total-prs
+{
+	position: absolute;
+	top:0;
+	left:0;
+	width:120px;
+	height:100%;
+	color:#fff;
+}
+.total-prs .text1
+{
+	font-size: 13px;
+	margin-top: 10px;
+}
+.total-prs .text2
+{
+	font-size: 20px;
+}
+.total-prs .text1 , .total-prs .text2
+{
+	display:inline-block;
+	width:100%;
+}
